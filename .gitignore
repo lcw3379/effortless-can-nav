@@ -8,3 +8,7 @@ venv/
 install/
 log/
 *.log
+server
+server.c
+client
+client.c
