@@ -12,3 +12,4 @@ server
 server.c
 client
 client.c
+.bashrc
