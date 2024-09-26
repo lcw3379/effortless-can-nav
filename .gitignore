@@ -5,3 +5,6 @@ vendor/ethercat
 vendor/SOEM
 vendor/CANopenLinux
 venv/
+install/
+log/
+*.log
