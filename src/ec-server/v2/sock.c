@@ -24,7 +24,7 @@ int ListenAndServe(int port){
     int running_stat = 0;
 
     int client_type = 0;
- 
+    // IPv4 인터넷 프로토콜을 사용하는 TCP 소켓 생성.
     if ((server_fd = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
         perror("socket failed");
         return EXIT_FAILURE;
@@ -54,7 +54,7 @@ int ListenAndServe(int port){
 
 
     for(;;){
-
+        // 클라이언트가 접속하면 클라이언트 소켓을 생성하고 클라이언트 소켓을 반환한다.
         if ((client_socket = accept(server_fd, (struct sockaddr*)&address, &addrlen)) < 0) {
             perror("accept");
             return EXIT_FAILURE;
@@ -65,7 +65,7 @@ int ListenAndServe(int port){
         int client_type;
             if (read(client_socket, &client_type, sizeof(int)) > 0) {
                 if(client_type){
-                    printf(" Client type: Terminal Client\n");        
+                    printf(" Client type: Terminal Client\n");  // client type이 1이면 터미널 클라이언트 , 0이면 GUI 클라이언트.
                 }
                 else{
                     printf("Client type: GUI Client\n");
@@ -105,7 +105,7 @@ int ListenAndServe(int port){
 
                 }
 
-                if(client_type == 0){
+                if(client_type == 0){ // GUI 클라이언트에서 명령이 왔으면
 
                     for(int i = 0 ; i < tmpread; i++){
 

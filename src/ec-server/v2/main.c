@@ -94,7 +94,7 @@ int main(int argc, char *argv[])
 
 {
 
-   int config_result = InitRuntimeFrom("config.json");
+   int config_result = InitRuntimeFrom("config.json"); // 설정파일 읽기.
 
 
    if (config_result < 0){
@@ -107,7 +107,7 @@ int main(int argc, char *argv[])
    }
 
 
-   int wheel_result = InitWheelDaemon(CAN_DEV_NAME, CAN_NODE_ID_STR);
+   int wheel_result = InitWheelDaemon(CAN_DEV_NAME, CAN_NODE_ID_STR); // 휠 초기화
 
    wheel_result = InitWheelCmdGateway();
 
@@ -117,7 +117,7 @@ int main(int argc, char *argv[])
       return wheel_result;
    }
 
-   signal(SIGINT, ECAT2_sigint_handler);
+   signal(SIGINT, ECAT2_sigint_handler); // ctrl + c 등으로 종료할 때의 인터럽트 핸들러 등록. sigint는 signal interrupt라는 뜻이다.
 
 
 
@@ -137,13 +137,13 @@ int main(int argc, char *argv[])
 
       {
 
-         printf("    - %s  (%s)\n", adapter->name, adapter->desc);
+         printf("    - %s  (%s)\n", adapter->name, adapter->desc); // 사용가능한 어댑터 출력.
 
          adapter = adapter->next;
 
       }
 
-      ec_free_adapters(adapter);
+      ec_free_adapters(adapter); // 어댑터 해제.
 
 
    }
@@ -152,7 +152,7 @@ int main(int argc, char *argv[])
 
    {
 
-      osal_thread_create(&thread1, 128000, &ECAT2_check, NULL);
+      osal_thread_create(&thread1, 128000, &ECAT2_check, NULL); // 이더캣 체크하는 스레드 생성. 슬레이브들의 상태를 지속적으로 체크하는 스레드.
 
       /* start cyclic part */
 

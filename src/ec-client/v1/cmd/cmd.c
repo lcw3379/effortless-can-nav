@@ -117,7 +117,7 @@ int RunInteractive(){
 
             printf("%s\n", res);
 
-        } else if(strcmp(runtime_args[0], "disconnect") == 0){
+        } else if(strcmp(runtime_args[0], "disconnect") == 0){ //disconnect 명령어가 들어오면 반복문 종료.
 
             char res[MAX_RESULT_STRLEN] = {0};
 

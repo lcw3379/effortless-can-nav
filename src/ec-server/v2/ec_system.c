@@ -552,42 +552,30 @@ void ECAT2_lifecycle(char *ifname)
    }
 
 
-   ec_config_map(&IOmap);
-
+   ec_config_map(&IOmap); 
 
    ec_configdc();
 
-
    printf("Slaves mapped, state to SAFE_OP.\n");
-
    /* wait for all slaves to reach SAFE_OP state */
-
    ec_statecheck(0, EC_STATE_SAFE_OP, EC_TIMEOUTSTATE * 4);
-
 
    printf("Request operational state for all slaves\n");
 
    expectedWKC = (ec_group[0].outputsWKC * 2) + ec_group[0].inputsWKC;
 
    printf("Calculated(expected) workcounter %d\n", expectedWKC);
-
    /* send one valid process data to make outputs in slaves happy*/
-
    ec_send_processdata();
 
    ec_receive_processdata(EC_TIMEOUTRET);
-
-
    /* request OP state for all slaves */
-
    ec_slave[0].state = EC_STATE_OPERATIONAL;
 
    ec_writestate(0);
 
    chk = 200;
-
    /* wait for all slaves to reach OP state */
-
    do
 
    {
@@ -902,7 +890,7 @@ OSAL_THREAD_FUNC ECAT2_check(void *ptr)
 
       }
 
-      osal_usleep(50000);
+      osal_usleep(50000); // 
 
    }
 

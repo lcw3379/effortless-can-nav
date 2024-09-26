@@ -10,6 +10,7 @@ int InitRuntimeFrom(char* filename){
 
     FILE *fp = fopen(filename, "r");
 
+    // 동적 할당 하고... config.json파일 읽고...
     if (fp != NULL) {
 
         if (fseek(fp, 0L, SEEK_END) == 0) {

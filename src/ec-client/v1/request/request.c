@@ -123,7 +123,7 @@ int InitECCmdGatewayWithTimeout(char* res, char* addr, int port, long timeout){
     
     
 
-    if(fcntl(SOCK_FD, F_SETFL, sockfd_flags_before | O_NONBLOCK)<0){
+    if(fcntl(SOCK_FD, F_SETFL, sockfd_flags_before | O_NONBLOCK)<0){ // 비블로킹 모드로 설정. 연결 과정이 완료될 때까지 프로그램이 대기하지 않고 즉시 반환됨.
 
 
         printf("failed to setfl\n");
